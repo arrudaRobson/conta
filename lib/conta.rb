@@ -13,7 +13,8 @@ class Conta
       @saldo -= valor
     elsif @limite
       @saldo -= valor
-      no_limite()
+      @limite -= valor
+      be_no_limite()
     end
     false
   end
@@ -22,8 +23,12 @@ class Conta
     @saldo += valor
   end
 
-  def no_limite
-    true
+  def be_no_limite(conta)
+    if @limite <= 0
+      true
+    else
+      false
+    end
   end
 
   def transfere(conta, valor)
